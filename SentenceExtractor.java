@@ -42,9 +42,8 @@ public class SentenceExtractor
 					return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
 				}
 			});
-
-		 
-		
+			
+			
 			for (i = 0; i < files.length; i++) 
 			{
 				if (files[i].isFile()) 
@@ -80,7 +79,7 @@ public class SentenceExtractor
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
+		}
 			
 
 		// TODO Auto-generated method stub
@@ -113,39 +112,42 @@ public class SentenceExtractor
 		
 			
 
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < sentences.size(); i++) {
 				
 				
 
 				// calling every extractors and getting outputs
 
 				for (int j = 0; j < portNumb.length; j++) {
-				
-					String _extractorAPICall_URL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + sentences.get(i);
+					String _extractorURL = "https://www.google.com";
 					
-					String url2 = "http://localhost:"+ portNumb[j]+ "/extractSimple?input=" + "obama";
-					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url2));	
+				
+//					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + sentences.get(i);
+					
+//					String url2 = 
+//					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url2));	
 			
 
-//					URL url;
-//					try {
-//						url = new URL(_extractorAPICall_URL);
-//
-//						HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//						con.setRequestMethod("GET");
-//
-//						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//						String inputLine;
-//						StringBuffer response = new StringBuffer();
-//
-//						while ((inputLine = in.readLine()) != null) 
-//						{
-//							response.append(inputLine);
-//						}
-//						in.close();
-//
-//						// print result
-//						System.out.println(response.toString());
+					URL url;
+					try {
+						url = new URL(_extractorURL);
+
+						HttpURLConnection con = (HttpURLConnection) url.openConnection();
+						System.out.println(url);
+						con.setRequestMethod("GET");
+
+						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+						String inputLine;
+						StringBuffer response = new StringBuffer();
+
+						while ((inputLine = in.readLine()) != null) 
+						{
+							response.append(inputLine);
+						}
+						in.close();
+
+						// print result
+						System.out.println(response.toString());
 //						if (j == 0) {
 //							foxRespMap.put(sentences.get(i), response.toString());
 //						} else if (j == 1) {
@@ -160,12 +162,13 @@ public class SentenceExtractor
 //							sorookinRespMap.put(sentences.get(i), response.toString());
 //						}
 
-//					}
-//				catch (MalformedURLException e) 
-//					{
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+					}
+					
+				catch (MalformedURLException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				}
 

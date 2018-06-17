@@ -28,10 +28,11 @@ import org.apache.commons.lang3.StringUtils;
  */
 
 public class OldSentenceFinder {
+	public static void main(String[] args) throws IOException  {
 
-	public void obtainSentencefromFiles(String filesPath) throws IOException {
 
-		File path = new File(filesPath);
+
+		File path = new File("C:\\Users\\harsh\\Downloads\\Ensemble Data\\task3");
 		File[] files = path.listFiles();
 		List<String> sentences = new ArrayList<String>();
 
@@ -61,7 +62,7 @@ public class OldSentenceFinder {
 		}
 	}
 
-	public String readLineByLine(String filePath) {
+	public static String readLineByLine(String filePath) {
 		StringBuilder contentBuilder = new StringBuilder();
 		try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
 			stream.forEach(s -> contentBuilder.append(s).append("\n"));
@@ -73,7 +74,7 @@ public class OldSentenceFinder {
 
 	// method to get result from all the extractors
 
-	public void getResult(List<String> sentences) throws IOException 
+	public static void getResult(List<String> sentences) throws IOException 
 	
 	{
 
@@ -99,8 +100,10 @@ public class OldSentenceFinder {
 			// calling every extractors and getting outputs
 
 			for (int j = 0; j < portNumb.length; j++) {
-				String _extractorAPICall_URL = "http://localhost:" + portNumb[j] + "/extractSimple?input="
-						+ sentences.get(i);
+				String _extractorAPICall_URL = "https://www.google.com";
+				
+//				String _extractorAPICall_URL = "http://localhost:" + portNumb[j] + "/extractSimple?input="
+//						+ sentences.get(i);
 
 				URL url;
 				try {
@@ -143,3 +146,4 @@ public class OldSentenceFinder {
 		}
 	}
 }
+
