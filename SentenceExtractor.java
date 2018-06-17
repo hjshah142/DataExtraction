@@ -33,7 +33,8 @@ public class SentenceExtractor
 		List<String> sentences = new ArrayList<String>();
 
 			// sort the files in numerical order
-			Arrays.sort(files, new Comparator<File>() {
+			Arrays.sort(files, new Comparator<File>() 
+			{
 				@Override
 				public int compare(File f1, File f2) {
 					String s1 = f1.getName().substring(5, f1.getName().indexOf("."));
@@ -48,25 +49,20 @@ public class SentenceExtractor
 			{
 				if (files[i].isFile()) 
 				{
-				    String Filename = 	files[i].getName();
-				    System.out.println(Filename);
-				    System.out.println(i);
-					
+//				    String Filename = 	files[i].getName();
+//				    System.out.println(Filename);
+//				    System.out.println(i);
+//					
 				    String sentence = readLineByLine(files[i].toString());
-
-					
-					int x = sentence.indexOf("nif:isString   ");
-					
-					
-					int start = x + 17;
-					
+				    int x = sentence.indexOf("nif:isString   ");
+					int start = x + 17;				
 //					int end = sentence.indexOf(".\" .");
 					int end = sentence.indexOf("\" .");
 					
              		end = end - 1;
 //					System.out.println(start);
 //				
-					System.out.println(end);
+//					System.out.println(end);
 				
 					String data = sentence.substring(start, end);
 					
@@ -90,6 +86,7 @@ public class SentenceExtractor
 		// TODO Auto-generated method stub
 
 	}
+
 	
 	private static  void getResult(List<String> sentences)  throws IOException 
 		
