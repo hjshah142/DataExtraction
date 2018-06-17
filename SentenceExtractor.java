@@ -44,7 +44,7 @@ public class SentenceExtractor
 			});
 			
 			
-			for (i = 0; i < files.length; i++) 
+			for (i = 0; i < 1; i++) 
 			{
 				if (files[i].isFile()) 
 				{
@@ -103,12 +103,12 @@ public class SentenceExtractor
 			int portNumb[] = { 2222, 2223, 2224, 2225, 2226, 2227 };
 			
 
-//			Map<String, String> foxRespMap = new HashMap<String, String>();
-//			Map<String, String> fredRespMap = new HashMap<String, String>();
-//			Map<String, String> spotlightRespMap = new HashMap<String, String>();
-//			Map<String, String> cedricRespMap = new HashMap<String, String>();
-//			Map<String, String> openIERespMap = new HashMap<String, String>();
-//			Map<String, String> sorookinRespMap = new HashMap<String, String>();
+			Map<String, String> foxRespMap = new HashMap<String, String>();
+			Map<String, String> fredRespMap = new HashMap<String, String>();
+			Map<String, String> spotlightRespMap = new HashMap<String, String>();
+			Map<String, String> cedricRespMap = new HashMap<String, String>();
+			Map<String, String> openIERespMap = new HashMap<String, String>();
+			Map<String, String> sorookinRespMap = new HashMap<String, String>();
 		
 			
 
@@ -119,9 +119,9 @@ public class SentenceExtractor
 				// calling every extractors and getting outputs
 
 				for (int j = 0; j < portNumb.length; j++) {
-					String _extractorURL = "https://www.google.com";
-					
-				
+//					String _extractorURL = "https://www.google.com";
+					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=";
+//				
 //					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + sentences.get(i);
 					
 //					String url2 = 
@@ -148,19 +148,19 @@ public class SentenceExtractor
 
 						// print result
 						System.out.println(response.toString());
-//						if (j == 0) {
-//							foxRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 1) {
-//							fredRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 2) {
-//							spotlightRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 3) {
-//							cedricRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 4) {
-//							openIERespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 5) {
-//							sorookinRespMap.put(sentences.get(i), response.toString());
-//						}
+						if (j == 0) {
+							foxRespMap.put(sentences.get(i), response.toString());
+						} else if (j == 1) {
+							fredRespMap.put(sentences.get(i), response.toString());
+						} else if (j == 2) {
+							spotlightRespMap.put(sentences.get(i), response.toString());
+						} else if (j == 3) {
+							cedricRespMap.put(sentences.get(i), response.toString());
+						} else if (j == 4) {
+							openIERespMap.put(sentences.get(i), response.toString());
+						} else if (j == 5) {
+							sorookinRespMap.put(sentences.get(i), response.toString());
+						}
 
 					}
 					
