@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-
-
 //import org.apache.commons.lang3.StringUtils;
 
 
@@ -95,17 +93,17 @@ public class SentenceExtractor
 			Map<String, Integer> port_vs_extractorMap = new HashMap<String, Integer>();
 			port_vs_extractorMap.put("fox", 2222);
 			port_vs_extractorMap.put("fred", 2223);
-			port_vs_extractorMap.put("spotlight", 2224);
+//			port_vs_extractorMap.put("spotlight", 2224);
 			port_vs_extractorMap.put("cedric", 2225);
 			port_vs_extractorMap.put("openIE", 2226);
 			port_vs_extractorMap.put("sorookin", 2227);
 
-			int portNumb[] = { 2222, 2223, 2224, 2225, 2226, 2227 };
+			int portNumb[] = { 2222, 2223, 2225, 2226, 2227 };
 			
 
 			Map<String, String> foxRespMap = new HashMap<String, String>();
 			Map<String, String> fredRespMap = new HashMap<String, String>();
-			Map<String, String> spotlightRespMap = new HashMap<String, String>();
+//			Map<String, String> spotlightRespMap = new HashMap<String, String>();
 			Map<String, String> cedricRespMap = new HashMap<String, String>();
 			Map<String, String> openIERespMap = new HashMap<String, String>();
 			Map<String, String> sorookinRespMap = new HashMap<String, String>();
@@ -119,56 +117,60 @@ public class SentenceExtractor
 				// calling every extractors and getting outputs
 
 				for (int j = 0; j < portNumb.length; j++) {
-//					String _extractorURL = "https://www.google.com";
-					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=";
+//				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + "abc def";
+				String URL2 = java.net.URLEncoder.encode( sentences.get(i), "UTF-8").replace("+", "%20");
+//					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=";
 //				
-//					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + sentences.get(i);
+				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + URL2;
 					
 //					String url2 = 
-//					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url2));	
+					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
 			
 
-					URL url;
-					try {
-						url = new URL(_extractorURL);
-
-						HttpURLConnection con = (HttpURLConnection) url.openConnection();
-						System.out.println(url);
-						con.setRequestMethod("GET");
-
-						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-						String inputLine;
-						StringBuffer response = new StringBuffer();
-
-						while ((inputLine = in.readLine()) != null) 
-						{
-							response.append(inputLine);
-						}
-						in.close();
-
-						// print result
-						System.out.println(response.toString());
-						if (j == 0) {
-							foxRespMap.put(sentences.get(i), response.toString());
-						} else if (j == 1) {
-							fredRespMap.put(sentences.get(i), response.toString());
-						} else if (j == 2) {
-							spotlightRespMap.put(sentences.get(i), response.toString());
-						} else if (j == 3) {
-							cedricRespMap.put(sentences.get(i), response.toString());
-						} else if (j == 4) {
-							openIERespMap.put(sentences.get(i), response.toString());
-						} else if (j == 5) {
-							sorookinRespMap.put(sentences.get(i), response.toString());
-						}
-
-					}
-					
-				catch (MalformedURLException e) 
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					URL url;
+//					try {
+//						url = new URL(_extractorURL);
+//
+//						HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//						System.out.println(url);
+//						con.setRequestMethod("GET");
+//
+//						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//						String inputLine;
+//						StringBuffer response = new StringBuffer();
+//
+//						while ((inputLine = in.readLine()) != null) 
+//						{
+////							java.awt.Desktop.getDesktop().browse(java.net.URI.create(inputLine));
+//							response.append(inputLine);
+//						}
+//						in.close();
+//
+//						// print result
+//						System.out.println(response.toString());
+//						if (j == 0) {
+//							foxRespMap.put(sentences.get(i), response.toString());
+//						} else if (j == 1) {
+//							fredRespMap.put(sentences.get(i), response.toString());
+//						} else if (j == 2) {
+//							spotlightRespMap.put(sentences.get(i), response.toString());
+//						} else if (j == 3) {
+//							cedricRespMap.put(sentences.get(i), response.toString());
+//						} else if (j == 4) {
+//							openIERespMap.put(sentences.get(i), response.toString());
+//						} 
+////						else if (j == 5) 
+////						{
+////							sorookinRespMap.put(sentences.get(i), response.toString());
+////						}
+//
+//					}
+//					
+//				catch (MalformedURLException e) 
+//					{
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 
 				}
 
