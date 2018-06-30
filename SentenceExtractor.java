@@ -34,7 +34,8 @@ public class SentenceExtractor
 			Arrays.sort(files, new Comparator<File>() 
 			{
 				@Override
-				public int compare(File f1, File f2) {
+				public int compare(File f1, File f2) 
+				{
 					String s1 = f1.getName().substring(5, f1.getName().indexOf("."));
 					String s2 = f2.getName().substring(5, f2.getName().indexOf("."));
 					return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
@@ -49,7 +50,7 @@ public class SentenceExtractor
 //				    String Filename = 	files[i].getName();
 //				    System.out.println(Filename);
 //				    System.out.println(i);
-//					
+					
 				    String sentence = readLineByLine(files[i].toString());
 				    int x = sentence.indexOf("nif:isString   ");
 					int start = x + 17;				
@@ -100,6 +101,7 @@ public class SentenceExtractor
 
 			int portNumb[] = { 2222, 2224, 2225, 2226, 2227 };
 			
+			
 
 			Map<String, String> foxRespMap = new HashMap<String, String>();
 			Map<String, String> fredRespMap = new HashMap<String, String>();
@@ -110,25 +112,27 @@ public class SentenceExtractor
 		
 			
 
-			for (int i = 0; i < sentences.size(); i++) {
+			for (int i = 0; i < sentences.size(); i++) 
+			{
 				
 				
 
 				// calling every extractors and getting outputs
 
-				for (int j = 0; j < portNumb.length; j++) {
-//				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + "abc def";
+				for (int j = 0; j < portNumb.length; j++) 
+				{
+
 				String URL2 = java.net.URLEncoder.encode( sentences.get(i), "UTF-8").replace("+", "%20");
-//					String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=";
+
 //				
 				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + URL2;
 					
-//					String url2 = 
 //					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
 //					_extractorURL = "https://www.google.com/";
 
 					URL url;
-					try {
+					try 
+					{
 						url = new URL(_extractorURL);
 //
 						HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -143,7 +147,7 @@ public class SentenceExtractor
 						{
 
 						response.append(inputLine);
-						System.out.println(inputLine);
+//						System.out.println(inputLine);
 						
 						
 						}
@@ -152,9 +156,11 @@ public class SentenceExtractor
 					in.close();
 
 					// print result
-					System.out.println("----Extractors response--------------" + j  + " response");
-						System.out.println(response.toString());
-						System.out.println();
+//					System.out.println("----Extractors response--------------" + j  + " response");
+//					String response_string = response.toString();
+//						System.out.println(response.toString());
+//						System.out.println();
+						
 						
 						
 						
@@ -162,23 +168,45 @@ public class SentenceExtractor
 						
 				if (j == 0)  
 						{
-						foxRespMap.put(sentences.get(i), response.toString());
+					
+//						foxRespMap.(sentences.get(i), response.toString());
+						System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
+						String response_string = response.toString();
+							System.out.println(response.toString());
+							System.out.println();
+							
 						} 
 					else if (j == 1) 
 						{
 							fredRespMap.put(sentences.get(i), response.toString());
+							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
+							String response_string = response.toString();
+								System.out.println(response.toString());
+								System.out.println();
 						} 
 					else if (j == 2) 
 						{
 							spotlightRespMap.put(sentences.get(i), response.toString());
+							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
+							String response_string = response.toString();
+								System.out.println(response.toString());
+								System.out.println();
 						}
 					else if (j == 3) 
 						{
 							cedricRespMap.put(sentences.get(i), response.toString());
+							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
+							String response_string = response.toString();
+								System.out.println(response.toString());
+								System.out.println();
 						} 
 					else if (j == 4) 
 						{
 							openIERespMap.put(sentences.get(i), response.toString());
+							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
+							String response_string = response.toString();
+								System.out.println(response.toString());
+								System.out.println();
 						} 
 //						else if (j == 5) 
 //						{
