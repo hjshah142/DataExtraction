@@ -93,17 +93,17 @@ public class SentenceExtractor
 			Map<String, Integer> port_vs_extractorMap = new HashMap<String, Integer>();
 			port_vs_extractorMap.put("fox", 2222);
 			port_vs_extractorMap.put("fred", 2223);
-//			port_vs_extractorMap.put("spotlight", 2224);
+			port_vs_extractorMap.put("spotlight", 2224);
 			port_vs_extractorMap.put("cedric", 2225);
 			port_vs_extractorMap.put("openIE", 2226);
 			port_vs_extractorMap.put("sorookin", 2227);
 
-			int portNumb[] = { 2222, 2223, 2225, 2226, 2227 };
+			int portNumb[] = { 2222, 2224, 2225, 2226, 2227 };
 			
 
 			Map<String, String> foxRespMap = new HashMap<String, String>();
 			Map<String, String> fredRespMap = new HashMap<String, String>();
-//			Map<String, String> spotlightRespMap = new HashMap<String, String>();
+			Map<String, String> spotlightRespMap = new HashMap<String, String>();
 			Map<String, String> cedricRespMap = new HashMap<String, String>();
 			Map<String, String> openIERespMap = new HashMap<String, String>();
 			Map<String, String> sorookinRespMap = new HashMap<String, String>();
@@ -124,15 +124,15 @@ public class SentenceExtractor
 				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + URL2;
 					
 //					String url2 = 
-					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
-					_extractorURL = "https://www.google.com/";
+//					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
+//					_extractorURL = "https://www.google.com/";
 
 					URL url;
 					try {
 						url = new URL(_extractorURL);
 //
 						HttpURLConnection con = (HttpURLConnection) url.openConnection();
-						System.out.println(url);
+//						System.out.println(url);
 						con.setRequestMethod("GET");
 //
 					BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -143,23 +143,35 @@ public class SentenceExtractor
 						{
 
 						response.append(inputLine);
+						System.out.println(inputLine);
+						
+						
 						}
+
+					
 					in.close();
 
 					// print result
+					System.out.println("----Extractors response--------------" + j  + " response");
 						System.out.println(response.toString());
-				if (j == 0) 
+						System.out.println();
+						
+						
+						
+						
+						
+				if (j == 0)  
 						{
 						foxRespMap.put(sentences.get(i), response.toString());
 						} 
-//					else if (j == 1) 
-//						{
-//							fredRespMap.put(sentences.get(i), response.toString());
-//						} 
-//					else if (j == 2) 
-//						{
-//							spotlightRespMap.put(sentences.get(i), response.toString());
-//						}
+					else if (j == 1) 
+						{
+							fredRespMap.put(sentences.get(i), response.toString());
+						} 
+					else if (j == 2) 
+						{
+							spotlightRespMap.put(sentences.get(i), response.toString());
+						}
 					else if (j == 3) 
 						{
 							cedricRespMap.put(sentences.get(i), response.toString());
