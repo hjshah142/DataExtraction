@@ -125,52 +125,61 @@ public class SentenceExtractor
 					
 //					String url2 = 
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
-			
+					_extractorURL = "https://www.google.com/";
 
-//					URL url;
-//					try {
-//						url = new URL(_extractorURL);
+					URL url;
+					try {
+						url = new URL(_extractorURL);
 //
-//						HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//						System.out.println(url);
-//						con.setRequestMethod("GET");
+						HttpURLConnection con = (HttpURLConnection) url.openConnection();
+						System.out.println(url);
+						con.setRequestMethod("GET");
 //
-//						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//						String inputLine;
-//						StringBuffer response = new StringBuffer();
-//
-//						while ((inputLine = in.readLine()) != null) 
+					BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+					String inputLine;
+						StringBuffer response = new StringBuffer();
+
+					while ((inputLine = in.readLine()) != null) 
+						{
+
+						response.append(inputLine);
+						}
+					in.close();
+
+					// print result
+						System.out.println(response.toString());
+				if (j == 0) 
+						{
+						foxRespMap.put(sentences.get(i), response.toString());
+						} 
+//					else if (j == 1) 
 //						{
-////							java.awt.Desktop.getDesktop().browse(java.net.URI.create(inputLine));
-//							response.append(inputLine);
-//						}
-//						in.close();
-//
-//						// print result
-//						System.out.println(response.toString());
-//						if (j == 0) {
-//							foxRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 1) {
 //							fredRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 2) {
-//							spotlightRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 3) {
-//							cedricRespMap.put(sentences.get(i), response.toString());
-//						} else if (j == 4) {
-//							openIERespMap.put(sentences.get(i), response.toString());
 //						} 
-////						else if (j == 5) 
-////						{
-////							sorookinRespMap.put(sentences.get(i), response.toString());
-////						}
-//
-//					}
+//					else if (j == 2) 
+//						{
+//							spotlightRespMap.put(sentences.get(i), response.toString());
+//						}
+					else if (j == 3) 
+						{
+							cedricRespMap.put(sentences.get(i), response.toString());
+						} 
+					else if (j == 4) 
+						{
+							openIERespMap.put(sentences.get(i), response.toString());
+						} 
+//						else if (j == 5) 
+//						{
+//							sorookinRespMap.put(sentences.get(i), response.toString());
+//						}
+
+					}
 //					
-//				catch (MalformedURLException e) 
-//					{
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+				catch (MalformedURLException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				}
 
