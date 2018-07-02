@@ -43,7 +43,7 @@ public class SentenceExtractor
 			});
 			
 			
-			for (i = 0; i < 1; i++) 
+			for (i = 0; i < 2; i++) 
 			{
 				if (files[i].isFile()) 
 				{
@@ -73,6 +73,7 @@ public class SentenceExtractor
 				try 
 				{
 					getResult(sentences);
+					
 				} catch (Exception e)
 				{
 					// TODO Auto-generated catch block
@@ -86,7 +87,7 @@ public class SentenceExtractor
 	}
 
 	
-	private static  void getResult(List<String> sentences)  throws IOException 
+	public static  void getResult(List<String> sentences)  throws IOException 
 		
 		{
 		
@@ -171,16 +172,28 @@ public class SentenceExtractor
 					
 //						foxRespMap.(sentences.get(i), response.toString());
 						System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
-						String response_string = response.toString();
+						System.out.println(sentences.size());
+						List<String> fox_response_string_list = new ArrayList<String>();
+
+						String fox_response_string = response.toString();
+						fox_response_string_list.add(fox_response_string);
 							System.out.println(response.toString());
-							System.out.println();
+							System.out.println(fox_response_string);
+							 for(String s:fox_response_string_list)
+								   System.out.print(s+" ----");
+//							String[] response_string_array = new String[sentences.size()];
+//							for(int x= 0; x <=response_string_array.length; x++  )
+//							{ String response_string = response.toString();
+//								response_string_array[x]  =response_string;
+//								System.out.println();							}
+						}
 							
-						} 
+						 
 					else if (j == 1) 
 						{
 							fredRespMap.put(sentences.get(i), response.toString());
 							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
-							String response_string = response.toString();
+
 								System.out.println(response.toString());
 								System.out.println();
 						} 
