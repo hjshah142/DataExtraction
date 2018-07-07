@@ -14,6 +14,7 @@ import java.util.Random;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
+import weka.classifiers.meta.FilteredClassifier;
 
 
 public class ExtractorAPI 
@@ -70,6 +71,7 @@ public class ExtractorAPI
 		System.out.println(eval.toSummaryString());
 		System.out.println("printing evalution details result.......");
 		System.out.println(eval.toClassDetailsString());
+		System.out.println(eval.toMatrixString("=== Overall Confusion Matrix ===\n"));
 
 //	printing result comparison......
 		System.out.println("===================");
@@ -85,7 +87,36 @@ public class ExtractorAPI
 			double predNB = Treeclassifier.classifyInstance(newInst);
 			//use this value to get string value of the predicted class
 			String predString = filteredDataset.classAttribute().value((int) predNB);
-			System.out.println(actual+", "+predString);
+			System.out.println(actual+",         "+predString);
+			System.out.println("Provide Test Data");
+			
+//			load the arff file
+			String test_filename = "C:\\Users\\harsh\\Desktop\\WEKA\\datasetTest.arff";
+			DataSource test_source = new DataSource(test_filename);
+
+			Instances test_dataset = test_source.getDataSet();
+			System.out.println("printing summary of test data.....");
+			System.out.println(test_dataset.toSummaryString());
+	//save arff file
+			
+			ArffSaver test_saver = new ArffSaver();
+			test_saver.setInstances(test_dataset);
+			test_saver.setFile(new File("C:\\Users\\harsh\\Desktop\\WEKA\\Test_Dataset.arff"));
+			test_saver.writeBatch();
+			
+			test_dataset.setClassIndex(test_dataset.numAttributes()-1);
+			System.out.println(test_dataset.classAttribute());
+			FilteredClassifier fc = new FilteredClassifier();
+			//specify filter
+			fc.setFilter(converterVector);
+			//specify base classifier
+			fc.setClassifier(Treeclassifier);
+			//Build the meta-classifier
+			fc.buildClassifier(test_dataset);
+			
+			
+			
+			
 		}
 		
 		
