@@ -107,12 +107,21 @@ public class ExtractorAPI
 			test_dataset.setClassIndex(test_dataset.numAttributes()-1);
 			System.out.println(test_dataset.classAttribute());
 			FilteredClassifier fc = new FilteredClassifier();
-			//specify filter
 			fc.setFilter(converterVector);
+			converterVector.setInputFormat(test_dataset);
+			Instances filteredTestDataset = Filter.useFilter(test_dataset, converterVector);	
+			//specify filter
+		
+			test_saver.setInstances(filteredTestDataset);
 			//specify base classifier
 			fc.setClassifier(Treeclassifier);
 			//Build the meta-classifier
-			fc.buildClassifier(test_dataset);
+			fc.buildClassifier(filteredTestDataset);
+			System.out.println(filteredTestDataset.toString());
+			Evaluation eval2 = new Evaluation(test_dataset);
+			System.out.println((eval2.toMatrixString("=== Overall Confusion Matrix ===\n")));
+			System.out.println(eval2.toSummaryString());
+			
 			
 			
 			
