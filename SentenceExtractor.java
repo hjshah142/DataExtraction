@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-//import org.apache.commons.lang3.StringUtils;
+
 
 
 
@@ -28,7 +28,8 @@ public class SentenceExtractor
 		
 		File path = new File("C:\\Users\\harsh\\Downloads\\Ensemble Data\\task3");
 		File[] files = path.listFiles();
-		List<String> sentences = new ArrayList<String>();
+		 List<String> sentences = new ArrayList<String>();
+		 
 
 			// sort the files in numerical order
 			Arrays.sort(files, new Comparator<File>() 
@@ -43,7 +44,7 @@ public class SentenceExtractor
 			});
 			
 			
-			for (i = 0; i < 2; i++) 
+			for (i = 0; i < sentences.size(); i++) 
 			{
 				if (files[i].isFile()) 
 				{
@@ -80,9 +81,6 @@ public class SentenceExtractor
 					e.printStackTrace();
 				}
 		}
-			
-
-		// TODO Auto-generated method stub
 
 	}
 
@@ -100,7 +98,8 @@ public class SentenceExtractor
 			port_vs_extractorMap.put("openIE", 2226);
 			port_vs_extractorMap.put("sorookin", 2227);
 
-			int portNumb[] = { 2222, 2224, 2225, 2226, 2227 };
+//			int portNumb[] = { 2222, 2224, 2225, 2226, 2227 };
+			int portNumb[] = {2222, 2226};
 			
 			
 
@@ -128,7 +127,7 @@ public class SentenceExtractor
 //				
 				String _extractorURL = "http://localhost:"+ portNumb[j] + "/extractSimple?input=" + URL2;
 					
-//					java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(_extractorURL));	
 //					_extractorURL = "https://www.google.com/";
 
 					URL url;
@@ -157,10 +156,10 @@ public class SentenceExtractor
 					in.close();
 
 					// print result
-//					System.out.println("----Extractors response--------------" + j  + " response");
+					System.out.println("----Extractors response--------------" + j  + " response");
 //					String response_string = response.toString();
 //						System.out.println(response.toString());
-//						System.out.println();
+						System.out.println();
 						
 						
 						
@@ -177,11 +176,12 @@ public class SentenceExtractor
 
 						String fox_response_string = response.toString();
 						fox_response_string_list.add(fox_response_string);
-							System.out.println(response.toString());
+//							System.out.println(response.toString());
 							System.out.println(fox_response_string);
-							 for(String s:fox_response_string_list)
-								   System.out.print(s+" ----");
-//							String[] response_string_array = new String[sentences.size()];
+//							printing string list
+//							 for(String s:fox_response_string_list)
+//								   System.out.print(s+" ----");
+//	 						String[] response_string_array = new String[sentences.size()];
 //							for(int x= 0; x <=response_string_array.length; x++  )
 //							{ String response_string = response.toString();
 //								response_string_array[x]  =response_string;
@@ -201,7 +201,7 @@ public class SentenceExtractor
 						{
 							spotlightRespMap.put(sentences.get(i), response.toString());
 							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
-							String response_string = response.toString();
+				
 								System.out.println(response.toString());
 								System.out.println();
 						}
@@ -209,7 +209,7 @@ public class SentenceExtractor
 						{
 							cedricRespMap.put(sentences.get(i), response.toString());
 							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
-							String response_string = response.toString();
+	
 								System.out.println(response.toString());
 								System.out.println();
 						} 
@@ -217,7 +217,7 @@ public class SentenceExtractor
 						{
 							openIERespMap.put(sentences.get(i), response.toString());
 							System.out.println(portNumb[j]  + "----Extractors response--------------" + j  + " response");
-							String response_string = response.toString();
+					
 								System.out.println(response.toString());
 								System.out.println();
 						} 
@@ -237,8 +237,6 @@ public class SentenceExtractor
 				}
 
 			}
-		
-		// TODO Auto-generated method stub
 		
 	}
 
