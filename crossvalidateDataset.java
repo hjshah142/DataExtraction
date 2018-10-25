@@ -86,7 +86,9 @@ public class crossvalidateDataset
 			double predNB = Treeclassifier.classifyInstance(newInst);
 			//use this value to get string value of the predicted class
 			String predString = filteredDataset.classAttribute().value((int) predNB);
+			System.out.println("actual and prediction result will print here");
 			System.out.println(actual+",         "+predString);
+		
 		}
 
 	}
