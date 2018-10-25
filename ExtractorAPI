@@ -129,6 +129,7 @@ public class ExtractorAPI
 			System.out.println(test_dataset.toString());
 			System.out.println((eval2.toMatrixString("=== Overall Confusion Matrix ===\n")));
 			System.out.println(eval2.toSummaryString());
+			System.out.println("finished");
 			
 			
 			
